@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: taskflow
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/taskflow}
+    username: ${DB_USERNAME:taskflow}
+    password: ${DB_PASSWORD:taskflow}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate   # Flyway owns the schema; Hibernate only checks it matches the entities
+  flyway:
+    enabled: true
+
+server:
+  error:
+    include-stacktrace: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+app:
+  jwt:
+    # Base64-encoded 256-bit key. Override JWT_SECRET in any real environment.
+    secret: ${JWT_SECRET:dGFza2Zsb3ctZGV2LW9ubHktc2VjcmV0LWNoYW5nZS1tZS0yNTYtYml0cyE=}
+    expiration: ${JWT_EXPIRATION:PT1H}
+  bootstrap-admin:
+    email: ${ADMIN_EMAIL:admin@taskflow.local}
+    password: ${ADMIN_PASSWORD:Admin@12345}
