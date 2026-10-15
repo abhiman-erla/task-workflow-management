@@ -11,6 +11,10 @@ spring:
       ddl-auto: validate   # Flyway owns the schema; Hibernate only checks it matches the entities
   flyway:
     enabled: true
+  data:
+    web:
+      pageable:
+        max-page-size: 100   # ?size=10000 is silently capped, protecting the DB
 
 server:
   error:

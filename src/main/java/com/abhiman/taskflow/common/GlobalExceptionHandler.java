@@ -3,6 +3,7 @@ package com.abhiman.taskflow.common;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -77,6 +78,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     ProblemDetail handleAccessDenied(AccessDeniedException ex) {
         return problem(HttpStatus.FORBIDDEN, "Forbidden", ex.getMessage());
+    }
+
+    // e.g. GET /api/tasks?sort=doesNotExist
+    @ExceptionHandler(PropertyReferenceException.class)
+    ProblemDetail handleBadSortProperty(PropertyReferenceException ex) {
+        return problem(HttpStatus.BAD_REQUEST, "Bad request", "Unknown sort property '" + ex.getPropertyName() + "'");
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
