@@ -1,6 +1,6 @@
 # TaskFlow: Task & Workflow Management API
 
-[![CI](https://github.com/abhiman-06/task-workflow-management/actions/workflows/ci.yml/badge.svg)](https://github.com/abhiman-06/task-workflow-management/actions/workflows/ci.yml)
+[![CI](https://github.com/abhiman-erla/task-workflow-management/actions/workflows/ci.yml/badge.svg)](https://github.com/abhiman-erla/task-workflow-management/actions/workflows/ci.yml)
 
 A backend REST API for managing tasks inside projects, built with **Java 21, Spring Boot 3, PostgreSQL and JWT**.
 Tasks follow an enforced workflow (`TODO → IN_PROGRESS → IN_REVIEW → DONE`), access is controlled by roles and
