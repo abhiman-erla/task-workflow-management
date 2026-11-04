@@ -1,0 +1,6 @@
+# Known generic-api-key findings: HMAC signing keys that exist only as test
+# constants in JwtServiceTest (SECRET and otherSecret). They sign tokens in a
+# unit test with a fixed clock and protect nothing. Each entry names the commit,
+# the file, the rule and the line, so a secret anywhere else is still reported.
+91bc57d6326506143a18f59d52b0c4f4131cefc0:src/test/java/com/abhiman/taskflow/auth/JwtServiceTest.java:generic-api-key:17
+91bc57d6326506143a18f59d52b0c4f4131cefc0:src/test/java/com/abhiman/taskflow/auth/JwtServiceTest.java:generic-api-key:65
